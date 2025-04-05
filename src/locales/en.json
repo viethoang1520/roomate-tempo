@@ -1,0 +1,93 @@
+{
+  "header": {
+    "home": "Home",
+    "findRoom": "Find Room",
+    "postRoom": "Post Room",
+    "support": "Support",
+    "login": "Login",
+    "register": "Register"
+  },
+  "home": {
+    "title": "Find roommates at",
+    "subtitle": "Vinhomes Grand Park",
+    "description": "Platform connecting students to find and share rooms safely and conveniently with user verification process",
+    "searchPlaceholder": "Enter building name (e.g. S1.01)",
+    "search": "Search",
+    "findRoomButton": "Find Room",
+    "postRoomButton": "Post Room"
+  },
+  "featuredRooms": {
+    "title": "Featured Rooms",
+    "viewAll": "View all"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "search": {
+      "title": "Search",
+      "description": "Find rooms that match your needs through multi-criteria filters"
+    },
+    "connect": {
+      "title": "Connect",
+      "description": "Contact room owners or roommates directly through the internal chat system"
+    },
+    "moveIn": {
+      "title": "Move In",
+      "description": "Secure deposit and move into your new room conveniently"
+    }
+  },
+  "testimonials": {
+    "title": "What Users Say About Us"
+  },
+  "footer": {
+    "description": "Platform connecting roommates at Vinhomes Grand Park",
+    "links": "Links",
+    "support": "Support",
+    "faq": "FAQ",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "copyright": "All rights reserved"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "emailOrPhone": "Email or Phone Number",
+    "phoneNumber": "Phone Number",
+    "phoneFormat": "Phone number must be in the format +84xxxxxxxxxx",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "loginWith": "Or login with",
+    "sendOtp": "Send OTP",
+    "resendOtp": "Resend OTP",
+    "otpSent": "OTP has been sent to your phone number",
+    "otp": "OTP Code",
+    "enterOtp": "Enter 6-digit OTP code",
+    "invalidOtp": "Invalid OTP. Please try again.",
+    "verifyOtp": "Verify",
+    "confirmPassword": "Confirm Password",
+    "continue": "Continue",
+    "back": "Back",
+    "complete": "Complete Registration",
+    "registerAccount": "Register Account"
+  },
+  "roomDetail": {
+    "back": "Back",
+    "details": "Details",
+    "amenities": "Amenities",
+    "rules": "Rules",
+    "description": "Description",
+    "rentalPrice": "Rental Price",
+    "deposit": "Deposit",
+    "postedDate": "Posted Date",
+    "wifiIncluded": "Free Wifi",
+    "aircon": "Air Conditioning",
+    "tv": "TV",
+    "kitchen": "Kitchen",
+    "privateBathroom": "Private Bathroom",
+    "bookNow": "Book Now",
+    "messageOwner": "Message Owner",
+    "similarRooms": "Similar Rooms",
+    "availableSpots": "available spots",
+    "toFPT": "to FPT University"
+  }
+}

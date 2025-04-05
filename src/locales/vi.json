@@ -1,0 +1,93 @@
+{
+  "header": {
+    "home": "Trang chủ",
+    "findRoom": "Tìm phòng",
+    "postRoom": "Đăng phòng",
+    "support": "Hỗ trợ",
+    "login": "Đăng nhập",
+    "register": "Đăng ký"
+  },
+  "home": {
+    "title": "Tìm người ghép phòng tại",
+    "subtitle": "Vinhomes Grand Park",
+    "description": "Nền tảng kết nối sinh viên tìm kiếm và ghép phòng trọ an toàn, tiện lợi với quy trình xác thực người dùng",
+    "searchPlaceholder": "Nhập tên tòa (VD: S1.01)",
+    "search": "Tìm kiếm",
+    "findRoomButton": "Tìm phòng",
+    "postRoomButton": "Đăng phòng"
+  },
+  "featuredRooms": {
+    "title": "Phòng nổi bật",
+    "viewAll": "Xem tất cả"
+  },
+  "howItWorks": {
+    "title": "Cách thức hoạt động",
+    "search": {
+      "title": "Tìm kiếm",
+      "description": "Tìm kiếm phòng phù hợp với nhu cầu của bạn thông qua bộ lọc đa tiêu chí"
+    },
+    "connect": {
+      "title": "Kết nối",
+      "description": "Liên hệ trực tiếp với chủ phòng hoặc người ghép thông qua hệ thống chat nội bộ"
+    },
+    "moveIn": {
+      "title": "Chuyển vào",
+      "description": "Đặt cọc an toàn và chuyển vào phòng mới của bạn một cách thuận tiện"
+    }
+  },
+  "testimonials": {
+    "title": "Người dùng nói gì về chúng tôi"
+  },
+  "footer": {
+    "description": "Nền tảng kết nối người ghép phòng tại Vinhomes Grand Park",
+    "links": "Liên kết",
+    "support": "Hỗ trợ",
+    "faq": "Câu hỏi thường gặp",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách bảo mật",
+    "contact": "Liên hệ",
+    "copyright": "Tất cả quyền được bảo lưu"
+  },
+  "auth": {
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký",
+    "emailOrPhone": "Email hoặc Số điện thoại",
+    "phoneNumber": "Số điện thoại",
+    "phoneFormat": "Số điện thoại phải có định dạng +84xxxxxxxxxx",
+    "password": "Mật khẩu",
+    "forgotPassword": "Quên mật khẩu?",
+    "loginWith": "Hoặc đăng nhập với",
+    "sendOtp": "Gửi mã OTP",
+    "resendOtp": "Gửi lại mã OTP",
+    "otpSent": "Mã OTP đã được gửi đến số điện thoại của bạn",
+    "otp": "Mã OTP",
+    "enterOtp": "Nhập mã OTP 6 số",
+    "invalidOtp": "Mã OTP không đúng. Vui lòng thử lại.",
+    "verifyOtp": "Xác nhận",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "continue": "Tiếp tục",
+    "back": "Quay lại",
+    "complete": "Hoàn tất đăng ký",
+    "registerAccount": "Đăng ký tài khoản"
+  },
+  "roomDetail": {
+    "back": "Quay lại",
+    "details": "Chi tiết",
+    "amenities": "Tiện ích",
+    "rules": "Nội quy",
+    "description": "Mô tả",
+    "rentalPrice": "Giá thuê",
+    "deposit": "Tiền cọc",
+    "postedDate": "Ngày đăng",
+    "wifiIncluded": "Wifi miễn phí",
+    "aircon": "Điều hòa",
+    "tv": "TV",
+    "kitchen": "Bếp",
+    "privateBathroom": "Phòng tắm riêng",
+    "bookNow": "Đặt cọc ngay",
+    "messageOwner": "Nhắn tin với chủ phòng",
+    "similarRooms": "Phòng tương tự",
+    "availableSpots": "chỗ trống",
+    "toFPT": "đến ĐH FPT"
+  }
+}
