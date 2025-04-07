@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import AuthModal from "./AuthModal";
+import Notification from "./Notification";
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -90,8 +91,19 @@ const Header: React.FC = () => {
           {/* Language Switcher */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
+              <Button variant="ghost" className="flex items-center gap-1 px-2">
+                <img
+                  src={
+                    i18n.language === "vi"
+                      ? "https://flagcdn.com/w20/vn.png"
+                      : "https://flagcdn.com/w20/us.png"
+                  }
+                  alt={i18n.language === "vi" ? "Vietnamese flag" : "US flag"}
+                  className="w-5 h-3.5"
+                />
+                <span className="text-xs font-medium">
+                  {i18n.language === "vi" ? "VI" : "EN"}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -104,7 +116,7 @@ const Header: React.FC = () => {
                   alt="Vietnamese flag"
                   className="w-5 h-3.5 mr-2"
                 />{" "}
-                Tiếng Việt
+                VI
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => changeLanguage("en")}
@@ -115,14 +127,21 @@ const Header: React.FC = () => {
                   alt="US flag"
                   className="w-5 h-3.5 mr-2"
                 />{" "}
-                English
+                EN
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <button className="text-gray-700 hover:text-green-600 transition-colors">
-            <Bell className="h-5 w-5" />
-          </button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="text-gray-700 hover:text-green-600 transition-colors">
+                <Bell className="h-5 w-5" />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <Notification />
+            </DialogContent>
+          </Dialog>
           <Dialog open={isAuthOpen} onOpenChange={setIsAuthOpen}>
             <DialogTrigger asChild>
               <Button
