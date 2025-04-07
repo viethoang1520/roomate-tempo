@@ -13,7 +13,7 @@ const SearchPage = () => <div className="p-8">Search Page - Coming Soon</div>;
 import PostRoomPageComponent from "./pages/PostRoomPage";
 // Import the actual ProfilePage component
 import ProfilePageComponent from "./pages/ProfilePage";
-const SupportPage = () => <div className="p-8">Support Page - Coming Soon</div>;
+import SupportPage from "./pages/SupportPage";
 
 function App() {
   // Mock authentication state - replace with actual auth logic later

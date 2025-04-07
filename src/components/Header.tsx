@@ -95,11 +95,27 @@ const Header: React.FC = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => changeLanguage("vi")}>
-                <span className="mr-2">🇻🇳</span> Tiếng Việt
+              <DropdownMenuItem
+                onClick={() => changeLanguage("vi")}
+                className="flex items-center"
+              >
+                <img
+                  src="https://flagcdn.com/w20/vn.png"
+                  alt="Vietnamese flag"
+                  className="w-5 h-3.5 mr-2"
+                />{" "}
+                Tiếng Việt
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("en")}>
-                <span className="mr-2">🇬🇧</span> English
+              <DropdownMenuItem
+                onClick={() => changeLanguage("en")}
+                className="flex items-center"
+              >
+                <img
+                  src="https://flagcdn.com/w20/us.png"
+                  alt="US flag"
+                  className="w-5 h-3.5 mr-2"
+                />{" "}
+                English
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

@@ -164,13 +164,17 @@ const AuthModal = ({ open = false, onOpenChange }: AuthModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] bg-white shadow-lg border-0">
+      <DialogContent className="sm:max-w-[500px] bg-white shadow-lg border-0 z-50">
         <style jsx global>{`
           .bg-background\/80 {
             background-color: rgba(0, 0, 0, 0.5) !important;
           }
           [data-radix-popper-content-wrapper] {
             z-index: 50 !important;
+          }
+          [data-state="open"][data-radix-dialog-overlay] {
+            background-color: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(2px);
           }
         `}</style>
         <DialogHeader>
