@@ -179,7 +179,7 @@ const AuthModal = ({ open = false, onOpenChange }: AuthModalProps) => {
         `}</style>
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold text-green-600">
-            Đăng ký/đăng nhập vào ứng dụng
+            Đăng ký/đăng nhập vào ứng dụng<></>
           </DialogTitle>
         </DialogHeader>
 

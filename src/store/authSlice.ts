@@ -65,7 +65,23 @@ export const verifyOTP = createAsyncThunk(
       // In a real app, this would come from the backend
       if (otp === "123456") {
         // Simulating correct OTP
-        return { token: "mock-jwt-token", success: true };
+
+        // Mock API call after successful OTP verification
+        const mockApiCall = async (phoneNumber: string) => {
+          console.log(`Making mock API call with phone number: ${phoneNumber}`);
+          // Simulate API delay
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          return {
+            success: true,
+            message: "User profile updated successfully",
+          };
+        };
+
+        // Call the mock API with the phone number
+        const apiResponse = await mockApiCall(phoneNumber);
+        console.log("API response:", apiResponse);
+
+        return { token: "mock-jwt-token", success: true, apiResponse };
       } else {
         return rejectWithValue("Invalid OTP");
       }
@@ -118,11 +134,16 @@ const authSlice = createSlice({
       })
       .addCase(
         verifyOTP.fulfilled,
-        (state, action: PayloadAction<{ token: string }>) => {
+        (
+          state,
+          action: PayloadAction<{ token: string; apiResponse?: any }>,
+        ) => {
           state.loading = false;
           state.token = action.payload.token;
           state.isAuthenticated = true;
           state.otpSent = false;
+          // You can handle the API response here if needed
+          console.log("API response in reducer:", action.payload.apiResponse);
         },
       )
       .addCase(verifyOTP.rejected, (state, action) => {
