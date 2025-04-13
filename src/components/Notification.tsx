@@ -41,21 +41,21 @@ const Notification: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white">
-      <DialogHeader className="border-b pb-3">
-        <DialogTitle className="flex items-center gap-2">
+    <div className="bg-white rounded-md overflow-hidden animate-in fade-in-0 zoom-in-95 duration-100">
+      <div className="border-b pb-3 pt-3 px-4">
+        <div className="flex items-center gap-2 font-semibold">
           <Bell className="h-5 w-5 text-green-600" />
           {t("notification.title")}
-        </DialogTitle>
-      </DialogHeader>
+        </div>
+      </div>
 
-      <ScrollArea className="h-[400px] py-2">
+      <ScrollArea className="h-[350px]">
         {notifications.length > 0 ? (
-          <div className="space-y-2 px-4">
+          <div className="space-y-1 p-2">
             {notifications.map((notification) => (
               <div
                 key={notification.id}
-                className={`p-3 rounded-lg ${notification.read ? "bg-gray-50" : "bg-green-50 border-l-4 border-green-600"}`}
+                className={`p-3 rounded-md hover:bg-gray-50 transition-colors cursor-pointer ${notification.read ? "" : "bg-green-50 border-l-4 border-green-600"}`}
               >
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-sm">{notification.title}</h4>
@@ -76,6 +76,11 @@ const Notification: React.FC = () => {
           </div>
         )}
       </ScrollArea>
+      <div className="border-t p-2 text-center">
+        <button className="text-sm text-green-600 hover:text-green-700 font-medium">
+          {t("notification.seeAll") || "See all notifications"}
+        </button>
+      </div>
     </div>
   );
 };

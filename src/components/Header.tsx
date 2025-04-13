@@ -132,16 +132,23 @@ const Header: React.FC = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Dialog>
-            <DialogTrigger asChild>
-              <button className="text-gray-700 hover:text-green-600 transition-colors">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="text-gray-700 hover:text-green-600 transition-colors relative">
                 <Bell className="h-5 w-5" />
+                {/* Notification indicator - can be conditionally rendered based on unread notifications */}
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
               </button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              className="w-80 p-0 overflow-hidden"
+            >
               <Notification />
-            </DialogContent>
-          </Dialog>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Dialog open={isAuthOpen} onOpenChange={setIsAuthOpen}>
             <DialogTrigger asChild>
               <Button
