@@ -11,6 +11,8 @@ import {
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import PostDetailsDialog from "./PostDetailsDialog";
+import RejectPostDialog from "./RejectPostDialog";
+import ReturnPostDialog from "./ReturnPostDialog";
 
 // Mock data for posts
 const mockPosts = [
@@ -77,6 +79,9 @@ const PostTable = () => {
   const [posts, setPosts] = useState(mockPosts);
   const [selectedPost, setSelectedPost] = useState(null);
   const [showDetailsDialog, setShowDetailsDialog] = useState(false);
+  const [showRejectDialog, setShowRejectDialog] = useState(false);
+  const [showReturnDialog, setShowReturnDialog] = useState(false);
+  const [postToAction, setPostToAction] = useState(null);
 
   const getStatusBadge = (status) => {
     switch (status) {
@@ -102,29 +107,60 @@ const PostTable = () => {
     setShowDetailsDialog(false);
   };
 
-  const handleReject = (postId) => {
-    // This will be implemented with confirmation dialog in a future step
-    if (window.confirm("Bạn có chắc chắn muốn từ chối bài đăng này?")) {
+  const handleReject = (post) => {
+    setPostToAction(post);
+    setShowRejectDialog(true);
+  };
+
+  const handleReturn = (post) => {
+    setPostToAction(post);
+    setShowReturnDialog(true);
+  };
+
+  const handleApprove = (postId) => {
+    setPosts(
+      posts.map((post) =>
+        post.id === postId ? { ...post, status: "approved" } : post,
+      ),
+    );
+  };
+
+  const handleConfirmReject = (reason) => {
+    if (postToAction) {
       setPosts(
         posts.map((post) =>
-          post.id === postId ? { ...post, status: "rejected" } : post,
+          post.id === postToAction.id
+            ? { ...post, status: "rejected", returnReason: reason }
+            : post,
         ),
       );
+      setShowRejectDialog(false);
+      setPostToAction(null);
     }
   };
 
-  const handleReturn = (postId) => {
-    // This will be implemented with reason input dialog in a future step
-    const reason = prompt("Nhập lý do yêu cầu sửa bài đăng:");
-    if (reason) {
+  const handleConfirmReturn = (reason) => {
+    if (postToAction) {
       setPosts(
         posts.map((post) =>
-          post.id === postId
+          post.id === postToAction.id
             ? { ...post, status: "returned", returnReason: reason }
             : post,
         ),
       );
+      setShowReturnDialog(false);
+      setPostToAction(null);
     }
+  };
+
+  const handleCloseRejectDialog = () => {
+    setShowRejectDialog(false);
+    setPostToAction(null);
+  };
+
+  const handleCloseReturnDialog = () => {
+    setShowReturnDialog(false);
+    setPostToAction(null);
   };
 
   return (
@@ -161,16 +197,24 @@ const PostTable = () => {
                   {post.status === "pending" && (
                     <>
                       <Button
+                        variant="success"
+                        size="sm"
+                        className="bg-green-500 hover:bg-green-600 text-white"
+                        onClick={() => handleApprove(post.id)}
+                      >
+                        Duyệt
+                      </Button>
+                      <Button
                         variant="destructive"
                         size="sm"
-                        onClick={() => handleReject(post.id)}
+                        onClick={() => handleReject(post)}
                       >
                         Từ chối
                       </Button>
                       <Button
                         variant="secondary"
                         size="sm"
-                        onClick={() => handleReturn(post.id)}
+                        onClick={() => handleReturn(post)}
                       >
                         Yêu cầu sửa
                       </Button>
@@ -188,6 +232,24 @@ const PostTable = () => {
         isOpen={showDetailsDialog}
         onClose={handleCloseDetailsDialog}
       />
+
+      {postToAction && (
+        <>
+          <RejectPostDialog
+            isOpen={showRejectDialog}
+            onClose={handleCloseRejectDialog}
+            onConfirm={handleConfirmReject}
+            postTitle={postToAction.title}
+          />
+
+          <ReturnPostDialog
+            isOpen={showReturnDialog}
+            onClose={handleCloseReturnDialog}
+            onConfirm={handleConfirmReturn}
+            postTitle={postToAction.title}
+          />
+        </>
+      )}
     </div>
   );
 };
