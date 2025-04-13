@@ -6,6 +6,7 @@ import routes from "tempo-routes";
 
 // Lazy load pages for better performance
 const RoomDetailPage = lazy(() => import("./pages/RoomDetailPage"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 // Placeholder for future pages
 const SearchPage = () => <div className="p-8">Search Page - Coming Soon</div>;
@@ -58,6 +59,7 @@ function App() {
           <Route path="/room/:roomId" element={<RoomDetailPage />} />
           <Route path="/post-test" element={<PostRoomPageComponent />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>
