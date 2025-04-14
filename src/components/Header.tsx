@@ -71,7 +71,7 @@ const Header: React.FC = () => {
             {t("header.findRoom")}
           </Link>
           <Link
-            to="/post-room"
+            to="/post-test"
             className={`flex items-center ${isActive("/post-room") ? "text-green-600 font-medium" : "text-gray-700 hover:text-green-600 transition-colors"}`}
           >
             <Upload className="h-4 w-4 mr-1" />
