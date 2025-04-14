@@ -64,8 +64,8 @@ const Header: React.FC = () => {
             {t("header.home")}
           </Link>
           <Link
-            to="/search"
-            className={`flex items-center ${isActive("/search") ? "text-green-600 font-medium" : "text-gray-700 hover:text-green-600 transition-colors"}`}
+            to="/find-room"
+            className={`flex items-center ${isActive("/find-room") ? "text-green-600 font-medium" : "text-gray-700 hover:text-green-600 transition-colors"}`}
           >
             <MapPin className="h-4 w-4 mr-1" />
             {t("header.findRoom")}
@@ -177,7 +177,7 @@ const Header: React.FC = () => {
               </div>
             </Link>
             <Link
-              to="/search"
+              to="/find-room"
               className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             >
               <div className="flex items-center">
