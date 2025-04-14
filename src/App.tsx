@@ -16,6 +16,7 @@ import PostRoomPageComponent from "./pages/PostRoomPage";
 import ProfilePageComponent from "./pages/ProfilePage";
 import SupportPage from "./pages/SupportPage";
 import LoginPage from "./components/LoginPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
 import FindRoomPage from "./pages/FindRoomPage";
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/room/:roomId" element={<RoomDetailPage />} />
           <Route path="/post-test" element={<PostRoomPageComponent />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/find-room" element={<FindRoomPage />} />
         </Routes>
