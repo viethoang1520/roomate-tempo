@@ -18,6 +18,7 @@ import SupportPage from "./pages/SupportPage";
 import LoginPage from "./components/LoginPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import FindRoomPage from "./pages/FindRoomPage";
+import PostRoomForm from "./components/PostRoomForm";
 
 function App() {
   // Mock authentication state - replace with actual auth logic later
@@ -64,6 +65,7 @@ function App() {
           <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/find-room" element={<FindRoomPage />} />
+          <Route path="/test" element={<PostRoomForm />} />
         </Routes>
         {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>

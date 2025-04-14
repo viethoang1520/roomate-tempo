@@ -17,9 +17,12 @@ const PostRoomPage: React.FC = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     building: "",
+    apartment: "",
+    roomType: "",
     price: "",
     maxOccupants: "",
     availableSpots: "",
+    utilities: "",
     description: "",
     amenities: {
       wifi: false,
@@ -53,6 +56,18 @@ const PostRoomPage: React.FC = () => {
     "S3.05",
     "S3.06",
     "S3.07",
+  ];
+
+  // Room type options
+  const roomTypes = ["Studio", "1PN 1WC", "2PN 1WC", "2PN 2WC", "3PN 2WC"];
+
+  // Utilities options
+  const utilitiesOptions = [
+    "Trống",
+    "Bếp rèm",
+    "Máy giặt",
+    "Nội thất đầy đủ",
+    "Nội thất cơ bản",
   ];
 
   // Occupant options
@@ -126,20 +141,58 @@ const PostRoomPage: React.FC = () => {
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Building Selection */}
+            {/* Building and Apartment row */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* Building Selection */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">Tên tòa</label>
+                <Select
+                  value={formData.building}
+                  onValueChange={(value) =>
+                    handleSelectChange("building", value)
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Chọn tòa nhà" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {buildings.map((building) => (
+                      <SelectItem key={building} value={building}>
+                        {building}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Apartment */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">Số căn hộ</label>
+                <Input
+                  type="text"
+                  name="apartment"
+                  value={formData.apartment}
+                  onChange={handleInputChange}
+                  placeholder="Nhập số căn hộ (VD: 0511, A0806)"
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            {/* Room Type */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium">Tên tòa</label>
+              <label className="block text-sm font-medium">Loại phòng</label>
               <Select
-                value={formData.building}
-                onValueChange={(value) => handleSelectChange("building", value)}
+                value={formData.roomType}
+                onValueChange={(value) => handleSelectChange("roomType", value)}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Chọn tòa nhà" />
+                  <SelectValue placeholder="Chọn loại phòng" />
                 </SelectTrigger>
                 <SelectContent>
-                  {buildings.map((building) => (
-                    <SelectItem key={building} value={building}>
-                      {building}
+                  {roomTypes.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -158,8 +211,11 @@ const PostRoomPage: React.FC = () => {
                 onChange={handleInputChange}
                 placeholder="Nhập giá thuê"
                 min="0"
+                max="100000000"
+                step="100000"
                 className="w-full"
               />
+              <p className="text-xs text-gray-500">Tối đa: 100.000.000 VNĐ</p>
             </div>
 
             {/* Max Occupants */}
@@ -203,9 +259,35 @@ const PostRoomPage: React.FC = () => {
               />
             </div>
 
+            {/* Utilities */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium">
+                Tiện ích có sẵn
+              </label>
+              <Select
+                value={formData.utilities}
+                onValueChange={(value) =>
+                  handleSelectChange("utilities", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Chọn tiện ích có sẵn" />
+                </SelectTrigger>
+                <SelectContent>
+                  {utilitiesOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             {/* Amenities */}
             <div className="space-y-3">
-              <label className="block text-sm font-medium">Tiện ích</label>
+              <label className="block text-sm font-medium">
+                Tiện ích bổ sung
+              </label>
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <Checkbox
