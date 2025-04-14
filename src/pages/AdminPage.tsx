@@ -1,9 +1,12 @@
 import { useState } from "react";
 import PostTable from "../components/PostTable";
+import CollapsibleNavList from "../components/CollapsibleNavList";
+import { LayoutDashboard } from "lucide-react";
 
 const AdminPage = () => {
   // Mock authentication state - replace with actual auth logic later
   const isAdmin = true;
+  const [activeSection, setActiveSection] = useState("posts");
 
   if (!isAdmin) {
     return (
@@ -27,11 +30,19 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">Post Management</h2>
-        <PostTable />
+    <div className="flex h-screen bg-muted/20">
+      <CollapsibleNavList className="h-screen sticky top-0" />
+
+      <div className="flex-1 p-6 overflow-auto">
+        <div className="flex items-center gap-2 mb-6">
+          <LayoutDashboard className="h-6 w-6 text-primary" />
+          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Post Management</h2>
+          <PostTable />
+        </div>
       </div>
     </div>
   );
