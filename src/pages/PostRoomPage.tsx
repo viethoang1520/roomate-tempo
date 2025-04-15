@@ -26,8 +26,8 @@ const PostRoomPage: React.FC = () => {
     description: "",
     amenities: {
       wifi: false,
-      airConditioner: false,
-      privateBathroom: false,
+      sofa: false,
+      waterHeater: false,
       kitchen: false,
       washing: false,
       parking: false,
@@ -218,45 +218,48 @@ const PostRoomPage: React.FC = () => {
               <p className="text-xs text-gray-500">Tối đa: 100.000.000 VNĐ</p>
             </div>
 
-            {/* Max Occupants */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">
-                Số người tối đa
-              </label>
-              <Select
-                value={formData.maxOccupants}
-                onValueChange={(value) =>
-                  handleSelectChange("maxOccupants", value)
-                }
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Chọn số người tối đa" />
-                </SelectTrigger>
-                <SelectContent>
-                  {occupantOptions.map((option) => (
-                    <SelectItem key={option} value={option.toString()}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {/* Max Occupants and Available Spots row */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* Max Occupants */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">
+                  Số người tối đa
+                </label>
+                <Select
+                  value={formData.maxOccupants}
+                  onValueChange={(value) =>
+                    handleSelectChange("maxOccupants", value)
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Chọn số người tối đa" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {occupantOptions.map((option) => (
+                      <SelectItem key={option} value={option.toString()}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            {/* Available Spots */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">
-                Số người còn trống
-              </label>
-              <Input
-                type="number"
-                name="availableSpots"
-                value={formData.availableSpots}
-                onChange={handleInputChange}
-                placeholder="Nhập số người còn trống"
-                min="0"
-                max={formData.maxOccupants || "6"}
-                className="w-full"
-              />
+              {/* Available Spots */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">
+                  Số người còn trống
+                </label>
+                <Input
+                  type="number"
+                  name="availableSpots"
+                  value={formData.availableSpots}
+                  onChange={handleInputChange}
+                  placeholder="Nhập số người còn trống"
+                  min="0"
+                  max={formData.maxOccupants || "6"}
+                  className="w-full"
+                />
+              </div>
             </div>
 
             {/* Utilities */}
@@ -303,26 +306,26 @@ const PostRoomPage: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Checkbox
-                    id="airConditioner"
-                    checked={formData.amenities.airConditioner}
+                    id="sofa"
+                    checked={formData.amenities.sofa}
                     onCheckedChange={(checked) =>
-                      handleCheckboxChange("airConditioner", checked === true)
+                      handleCheckboxChange("sofa", checked === true)
                     }
                   />
-                  <label htmlFor="airConditioner" className="text-sm">
-                    Điều hòa
+                  <label htmlFor="sofa" className="text-sm">
+                    Sofa
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Checkbox
-                    id="privateBathroom"
-                    checked={formData.amenities.privateBathroom}
+                    id="waterHeater"
+                    checked={formData.amenities.waterHeater}
                     onCheckedChange={(checked) =>
-                      handleCheckboxChange("privateBathroom", checked === true)
+                      handleCheckboxChange("waterHeater", checked === true)
                     }
                   />
-                  <label htmlFor="privateBathroom" className="text-sm">
-                    Phòng tắm riêng
+                  <label htmlFor="waterHeater" className="text-sm">
+                    Máy nước nóng
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
