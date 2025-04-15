@@ -1,32 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import Header from "@/components/Header";
-import ProfileTabs from "@/components/ProfileTabs";
-import ProfileSidebar from "@/components/ProfileSidebar";
-import { ProfileFormData } from "@/components/ProfileForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react";
 
-const ProfilePage: React.FC = () => {
+const ProfileSettings: React.FC = () => {
   const { t } = useTranslation();
-  const [userData, setUserData] = useState({
-    name: "Đinh Việt Hoàng",
-    username: "nguyenvana",
-    avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=profile",
-    phoneNumber: "0367 862 734",
-    email: "viethoang1520@gmail.com",
-    joinDate: "Tháng 4, 2025",
-    isVerified: true, // Thêm trạng thái xác thực tài khoản
-  });
-
-  const handleProfileUpdate = (data: ProfileFormData) => {
-    console.log("Profile updated:", data);
-    setUserData((prev) => ({
-      ...prev,
-      name: data.name,
-    }));
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -38,7 +17,7 @@ const ProfilePage: React.FC = () => {
             Thiết lập tài khoản
           </h1>
           <p className="text-gray-500">
-            Quản lý thông tin tài khoản và thiết lập của bạn
+            Quản lý thiết lập và tùy chọn cho tài khoản của bạn
           </p>
         </div>
 
@@ -50,7 +29,7 @@ const ProfilePage: React.FC = () => {
               <div className="flex items-center space-x-4 mb-8">
                 <div className="relative">
                   <img
-                    src={userData.avatarUrl}
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=profile"
                     alt="Profile"
                     className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
                   />
@@ -59,44 +38,23 @@ const ProfilePage: React.FC = () => {
                   </button>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">{userData.name}</h3>
-                  <p className="text-sm text-gray-500">
-                    {userData.phoneNumber}
-                  </p>
-                  <div className="mt-1">
-                    {userData.isVerified ? (
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        <Icon
-                          icon="mdi:check-circle"
-                          className="w-3 h-3 mr-1"
-                        />
-                        Đã xác thực
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        <Icon
-                          icon="mdi:alert-circle"
-                          className="w-3 h-3 mr-1"
-                        />
-                        Chưa xác thực
-                      </span>
-                    )}
-                  </div>
+                  <h3 className="font-semibold text-lg">Đinh Việt Hoàng</h3>
+                  <p className="text-sm text-gray-500">0367 862 734</p>
                 </div>
               </div>
 
               {/* Navigation Menu */}
               <nav className="space-y-1">
                 <a
-                  href="#profile"
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg bg-green-50 text-green-600 font-medium"
+                  href="/profile"
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50"
                 >
                   <Icon icon="mdi:account" className="w-5 h-5" />
                   <span>Thông tin cá nhân</span>
                 </a>
                 <a
                   href="/profile/settings"
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50"
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg bg-green-50 text-green-600 font-medium"
                 >
                   <Icon icon="mdi:cog" className="w-5 h-5" />
                   <span>Thiết lập</span>
@@ -128,34 +86,105 @@ const ProfilePage: React.FC = () => {
 
           {/* Right Side - Content */}
           <div className="w-full lg:w-3/4 bg-white rounded-xl shadow-sm p-6">
-            <Tabs defaultValue="profile">
-              <TabsList className="mb-6">
-                <TabsTrigger value="profile">Thông tin cá nhân</TabsTrigger>
-                <TabsTrigger value="preferences">Thiết lập</TabsTrigger>
-                <TabsTrigger value="notifications">Thông báo</TabsTrigger>
-                <TabsTrigger value="security">Bảo mật</TabsTrigger>
-                <TabsTrigger value="roommates">Bạn cùng phòng</TabsTrigger>
-              </TabsList>
+            <h2 className="text-xl font-semibold mb-6">Thiết lập tài khoản</h2>
 
-              <TabsContent value="profile">
-                <ProfileTabs onSave={handleProfileUpdate} />
-              </TabsContent>
-              <TabsContent value="preferences">
-                <p>Thiết lập nội dung</p>
-              </TabsContent>
-              <TabsContent value="notifications">
-                <p>Nội dung thông báo</p>
-              </TabsContent>
-              <TabsContent value="security">
-                <p>Nội dung bảo mật</p>
-              </TabsContent>
-              <TabsContent value="roommates">
-                <p>Nội dung bạn cùng phòng</p>
-              </TabsContent>
-            </Tabs>
+            <div className="space-y-6">
+              <div className="border-b pb-6">
+                <h3 className="text-lg font-medium mb-4">Ngôn ngữ</h3>
+                <div className="flex items-center gap-4">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <img
+                      src="https://flagcdn.com/w20/vn.png"
+                      alt="Vietnamese"
+                      className="w-5 h-auto"
+                    />
+                    Tiếng Việt
+                  </Button>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <img
+                      src="https://flagcdn.com/w20/us.png"
+                      alt="English"
+                      className="w-5 h-auto"
+                    />
+                    English
+                  </Button>
+                </div>
+              </div>
+
+              <div className="border-b pb-6">
+                <h3 className="text-lg font-medium mb-4">Chế độ hiển thị</h3>
+                <div className="flex items-center gap-4">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Icon icon="mdi:weather-sunny" className="w-5 h-5" />
+                    Sáng
+                  </Button>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Icon icon="mdi:weather-night" className="w-5 h-5" />
+                    Tối
+                  </Button>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Icon icon="mdi:theme-light-dark" className="w-5 h-5" />
+                    Tự động
+                  </Button>
+                </div>
+              </div>
+
+              <div className="border-b pb-6">
+                <h3 className="text-lg font-medium mb-4">Đơn vị tiền tệ</h3>
+                <div className="flex items-center gap-4">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    VND
+                  </Button>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    USD
+                  </Button>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-medium mb-4">Thông báo Email</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Thông báo phòng mới</p>
+                      <p className="text-sm text-gray-500">
+                        Nhận email khi có phòng mới phù hợp với tiêu chí tìm
+                        kiếm của bạn
+                      </p>
+                    </div>
+                    <div className="flex items-center h-5">
+                      <input
+                        id="email-notifications"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                        defaultChecked
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Thông báo tin nhắn</p>
+                      <p className="text-sm text-gray-500">
+                        Nhận email khi có tin nhắn mới
+                      </p>
+                    </div>
+                    <div className="flex items-center h-5">
+                      <input
+                        id="message-notifications"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                        defaultChecked
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
+
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12 mt-8">
         <div className="container mx-auto px-4">
@@ -221,4 +250,4 @@ const ProfilePage: React.FC = () => {
   );
 };
 
-export default ProfilePage;
+export default ProfileSettings;

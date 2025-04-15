@@ -14,6 +14,7 @@ const SearchPage = () => <div className="p-8">Search Page - Coming Soon</div>;
 import PostRoomPageComponent from "./pages/PostRoomPage";
 // Import the actual ProfilePage component
 import ProfilePageComponent from "./pages/ProfilePage";
+import ProfileSettingsComponent from "./pages/ProfileSettings";
 import SupportPage from "./pages/SupportPage";
 import LoginPage from "./components/LoginPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
@@ -58,6 +59,10 @@ function App() {
             }
           />
           <Route path="/test-profile" element={<ProfilePageComponent />} />
+          <Route
+            path="/profile/settings"
+            element={<ProfileSettingsComponent />}
+          />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/room/:roomId" element={<RoomDetailPage />} />
           <Route path="/post-test" element={<PostRoomPageComponent />} />
